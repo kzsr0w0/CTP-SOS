@@ -8,12 +8,23 @@ import pickle
 import numpy as np
 from pydantic import BaseModel
 from datetime import datetime
+import requests
+import io
+import pickle
+
+# GitHubのファイルURL
+url = 'https://github.com/kzsr0w0/CTP-SOS.git'
 
 app = FastAPI()
 
 # モデルの読み込み
-with open('model_arima_20240314.pkl', 'rb') as pkl:
-    model = pickle.load(pkl)
+#with open('model_arima_20240314.pkl', 'rb') as pkl:
+#    model = pickle.load(pkl)
+response = requests.get(url)
+data = pickle.loads(response.content)
+#with open('model_arima_20240314.pkl', 'rb') as pkl:
+#    model = pickle.load(pkl)
+
 
 # 基準日の設定
 start_date = datetime(2022, 4, 30) # 学習させたデータが4/30まで

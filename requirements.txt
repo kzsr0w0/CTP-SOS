@@ -10,3 +10,5 @@ matplotlib
 plotly
 joblib
 statsmodels
+pulp
+requests
